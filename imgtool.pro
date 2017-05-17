@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    compresor.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    compresor.h
 
 FORMS    += mainwindow.ui
 

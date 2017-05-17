@@ -5,6 +5,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
+#include "compresor.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     cv::Mat image;
+
+    Compresor *mihilo;
+
+
 private slots:
     void on_addfile_clicked();
 
@@ -30,6 +35,8 @@ private slots:
     void on_img_2_linkActivated(const QString &link);
 
     void on_completa_clicked();
+
+    void on_comprimir_clicked();
 
 private:
     Ui::MainWindow *ui;
