@@ -102,6 +102,19 @@
      <string>Factor de compresion:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="filtro_medianas">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>390</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro Mediana</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

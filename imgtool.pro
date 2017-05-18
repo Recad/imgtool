@@ -14,12 +14,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    compresor.cpp
+    compresor.cpp \
+    medianfilter.cpp \
+    uimedianfilter.cpp
 
 HEADERS  += mainwindow.h \
-    compresor.h
+    compresor.h \
+    medianfilter.h \
+    uimedianfilter.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    uimedianfilter.ui
 
 INCLUDEPATH += /usr/include/opencv2/
 LIBS += -L/usr/lib64/ -lopencv_core  -lopencv_highgui -lopencv_imgproc

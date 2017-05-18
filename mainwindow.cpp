@@ -1,4 +1,5 @@
 #include "compresor.h"
+#include "uimedianfilter.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <opencv2/core/core.hpp>
@@ -18,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     ui->completa->setVisible(false);
+    ui->filtro_medianas->setVisible(false);
 /*
     cv::Mat inputImage = cv::imread("marilin.jpg",CV_LOAD_IMAGE_GRAYSCALE);
 
@@ -88,6 +90,7 @@ void MainWindow::on_addfile_clicked()
            // resize the label to fit the image
            ui->img_2->resize(ui->img_2->pixmap()->size());
            ui->completa->setVisible(true);
+           ui->filtro_medianas->setVisible(true);
 
            img.save("mico");
            imwrite( "micoopensv.jpg", image );
@@ -125,5 +128,13 @@ void MainWindow::on_comprimir_clicked()
 
     }
 
+
+}
+
+void MainWindow::on_filtro_medianas_clicked()
+{
+    UiMedianFilter *uimedianfilter = new UiMedianFilter();
+    uimedianfilter->DisplayImageFiltrada(image.clone());
+    uimedianfilter->show();
 
 }

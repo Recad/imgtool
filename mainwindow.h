@@ -38,6 +38,8 @@ private slots:
 
     void on_comprimir_clicked();
 
+    void on_filtro_medianas_clicked();
+
 private:
     Ui::MainWindow *ui;
 
