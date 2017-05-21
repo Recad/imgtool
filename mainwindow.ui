@@ -43,10 +43,10 @@
    <widget class="QLabel" name="img_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>381</width>
-      <height>281</height>
+      <x>130</x>
+      <y>100</y>
+      <width>421</width>
+      <height>321</height>
      </rect>
     </property>
     <property name="text">
@@ -56,9 +56,9 @@
    <widget class="QPushButton" name="completa">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>120</y>
-      <width>101</width>
+      <x>557</x>
+      <y>230</y>
+      <width>111</width>
       <height>34</height>
      </rect>
     </property>
@@ -66,53 +66,30 @@
      <string>Ver completa</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="comprimir">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>390</y>
-      <width>101</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Comprimir</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="factordecompresion">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>340</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>340</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Factor de compresion:</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="filtro_medianas">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>390</y>
+      <x>560</x>
+      <y>280</y>
       <width>111</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Filtro Mediana</string>
+     <string>Filtro Medianas</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="filtro_sobel">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>320</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filtro Sobel</string>
     </property>
    </widget>
   </widget>

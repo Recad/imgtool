@@ -1,14 +1,13 @@
-#include "compresor.h"
-#include "uimedianfilter.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "medianfilter.h"
+#include "sobelfilter.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <iostream>
 #include <QFileDialog>
-#include <QMessageBox>..
 using namespace cv;
 using namespace std;
 
@@ -20,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->completa->setVisible(false);
     ui->filtro_medianas->setVisible(false);
-/*
-    cv::Mat inputImage = cv::imread("marilin.jpg",CV_LOAD_IMAGE_GRAYSCALE);
+
+    cv::Mat inputImage = cv::imread("D:marilin.jpg",CV_LOAD_IMAGE_GRAYSCALE);
 
     if(! inputImage.data )                              // Check for invalid input
         {
@@ -31,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
         namedWindow( "Display window", WINDOW_AUTOSIZE );// Create a window for display.
         imshow( "Display window", inputImage );
-    }*/
+    }
 
 }
 
@@ -53,7 +52,8 @@ void MainWindow::on_OpenImg_clicked(){
 
 void MainWindow::printMat(Mat mat){
 
-    imshow( "Mostrando imagen", mat);
+    namedWindow( "Imprimiendo imagen", WINDOW_AUTOSIZE );// Create a window for display.
+    imshow( "Display window", mat);
 
 }
 
@@ -70,11 +70,11 @@ void MainWindow::on_addfile_clicked()
          cv::Mat inputImage = cv::imread(imgpath.toStdString(),CV_LOAD_IMAGE_GRAYSCALE);
          this->image=inputImage;
 
-         // inputImage.convertTo(inputImage, CV_32F, 1.0/255);
+        // inputImage.convertTo(inputImage, CV_32F, 1.0/255);
          //SVD svdimagencita(inputImage);
 
          cv::Size size(300,300);//the dst image size,e.g.100x100
-         cv::Mat temp;
+        cv::Mat temp;
          cv::resize(inputImage,temp,size);//resize image
 
           //el resto de la prueba
@@ -108,33 +108,20 @@ void MainWindow::on_img_2_linkActivated(const QString &link)
 void MainWindow::on_completa_clicked()
 {
     printMat(this->image);
-
-
-}
-
-void MainWindow::on_comprimir_clicked()
-{
-    QString factor = ui->factordecompresion->toPlainText();
-    double factorum = factor.toFloat();
-
-    if (factorum > 0.0 && factorum <=100.0){
-        mihilo = new Compresor(factorum ,this->image );
-        mihilo->start();
-
-    }else {
-        QMessageBox msgBox;
-         msgBox.setText("Numero no valido");
-         msgBox.exec();
-
-    }
-
-
 }
 
 void MainWindow::on_filtro_medianas_clicked()
 {
-    UiMedianFilter *uimedianfilter = new UiMedianFilter();
-    uimedianfilter->DisplayImageFiltrada(image.clone());
-    uimedianfilter->show();
+    MedianFilter *medianfilter = new MedianFilter();
+    medianfilter->DisplayImageFiltrada(image.clone());
+    medianfilter->show();
 
 }
+
+void MainWindow::on_filtro_sobel_clicked(){
+
+    SobelFilter *sobelfilter = new SobelFilter();
+    sobelfilter->DisplayImageFiltrada(image.clone());
+    sobelfilter->show();
+}
+

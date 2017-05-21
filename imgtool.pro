@@ -1,9 +1,3 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-04-27T21:30:45
-#
-#-------------------------------------------------
-
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -11,20 +5,28 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = imgtool
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    compresor.cpp \
-    medianfilter.cpp \
-    uimedianfilter.cpp
+           mainwindow.cpp \
+           filtromedianas.cpp \
+           medianfilter.cpp \
+           filtrosobel.cpp \
+           sobelfiler.cpp
 
 HEADERS  += mainwindow.h \
-    compresor.h \
-    medianfilter.h \
-    uimedianfilter.h
+            filtromedianas.h \
+            medianfilter.h \
+            filtrosobel.h \
+            sobelfilter.h
 
 FORMS    += mainwindow.ui \
-    uimedianfilter.ui
+            medianfilter.ui \
+            sobelfilter.ui
 
-INCLUDEPATH += /usr/include/opencv2/
-LIBS += -L/usr/lib64/ -lopencv_core  -lopencv_highgui -lopencv_imgproc
+INCLUDEPATH += C:\opencv\build\install\include
+LIBS += -LC:\opencv\build\install\x86\mingw\lib\
+    -lopencv_core320.dll \
+    -lopencv_highgui320.dll \
+    -lopencv_imgcodecs320.dll \
+    -lopencv_imgproc320.dll \
+    -lopencv_features2d320.dll \
+    -lopencv_calib3d320.dll
