@@ -26,37 +26,51 @@ void Compresor::run(){
 
 cv::Mat Compresor::ComprimirImagen(){
     matriz.convertTo(matriz, CV_32F, 1.0/255);
-    SVD svdimagencita(matriz);
-    float porcentajeu = 1.0;
-    int valoresSingulares = 1 ;
+       std::cout<<"aca estoy en svd"<<std::endl;
+       SVD svdimagencita(matriz);
+       std::cout<<"pse svd"<<std::endl;
+       float porcentajeu = 1.0;
+       int valoresSingulares = 1 ;
 
 
 
-    if (porcentaje >0 and this->porcentaje <=100){
+       if (porcentaje >0 and this->porcentaje <=100){
 
-        porcentajeu = (this->porcentaje / 100.0);
+           porcentajeu = (this->porcentaje / 100.0);
 
-        valoresSingulares=floor(porcentajeu*svdimagencita.w.rows);
-    }
+           valoresSingulares=floor(porcentajeu*svdimagencita.w.rows);
+       }
 
-    Mat v ;
-    transpose(svdimagencita.vt,v);
+       Mat v ;
+       transpose(svdimagencita.vt,v);
 
 
-    Mat Umenor = svdimagencita.u.colRange(0 ,valoresSingulares);
-    Mat vmenor = v.colRange(0,valoresSingulares);
+       Mat Umenor = svdimagencita.u.colRange(0 ,valoresSingulares);
+       Mat vmenor = v.colRange(0,valoresSingulares);
 
-    Mat singula = svdimagencita.w.rowRange(0,valoresSingulares);
+       Mat singula = svdimagencita.w.rowRange(0,valoresSingulares);
 
-    Mat vt ;
-    transpose(vmenor,vt);
+       Mat vt ;
+       transpose(vmenor,vt);
 
-    //Construimos la imagen con esos valores singulares
+       //Construimos la imagen con esos valores singulares
 
-    Mat result = Umenor * Mat::diag(singula) * vt;
-    this->resultado = result;
-    cv::imshow("imagen comprimida",result);
-    return result;
+       Mat result = Umenor * Mat::diag(singula) * vt;
+       this->resultado = result;
+       cv::imshow("imagen comprimida",result);
+
+
+
+       std::ostringstream buff;
+           buff<<porcentajeu*100;
+
+       result.convertTo(result,CV_32F,255) ;
+       imwrite( "compresional"+buff.str()+".jpg", result);
+
+
+
+
+       return result;
 
 }
 
